@@ -35,7 +35,7 @@ export default function Products() {
             {product.map((ele)=>{
               return (<div className="col">
               <div className="card h-100 p-3" key={ele.id}>
-              <img src={ele.image} className="card-img-top" alt="Product Image" height="250px"/><hr></hr>
+              <img src={ele.image} className="card-img-top" alt="Product img" height="250px"/><hr></hr>
               <div className="card-body">
                 <h5 className="card-title">{ele.title.substring(0,40)}</h5>
                 <div className="card-title">{ele.category}</div>

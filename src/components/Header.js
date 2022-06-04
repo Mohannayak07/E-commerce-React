@@ -21,12 +21,12 @@ export default function Header() {
                             <Link className="nav-link" to='/about'>About</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link">Contact Us</a>
+                            <Link className="nav-link" to="/contact">Contact Us</Link>
                         </li>
                     </ul>
                     
-                        <Link className="btn btn-outline-dark me-2" type="submit">Login</Link>
-                        <button className="btn btn-outline-dark me-2" type="submit">SignUp</button>
+                        <Link className="btn btn-outline-dark me-2" type="submit" to="/login">Login</Link>
+                        <Link className="btn btn-outline-dark me-2" type="submit" to="/signup">SignUp</Link>
                         <Link to="/cart" className="btn btn-outline-dark me-2" type="submit">Cart</Link>
                     
                 </div>
