@@ -9,11 +9,132 @@
     padding:20px;
     border-radius: 20px;
 }
-#Himg1,#Himg2{
+#Himg1,#Himg3{
     width:100%;
     height:500px;
+    /* object-fit: cover; */
+    background-size: cover;
+    background-position: center;
     
 }
-h3{
+#Himg2{
+    width:60%;
+    height:500px;
+    /* object-fit: cover; */
+    background-size:auto;
+    background-position: center;
+}
+#hh1,#hh2{
     text-shadow: 2px 2px black;
 }
+#loginform,#sform{
+    
+    padding:40px;
+    margin:0 auto;
+    width:40%;
+    background-color: white;
+    border-radius: 12px;
+    margin-top: 50px;
+    box-shadow: 0 0 18px 2px grey;
+   
+}
+
+#lh3{
+    text-align: center;
+}
+#Lbtn,#sbtn{
+    width: 100%;
+}
+/* #prod{
+    padding:15px;
+} */
+span{
+    color: red;
+}
+#fimg1,#fimg2,#fimg3,#fimg4{
+    height:280px;
+   padding:15px;
+    
+}
+#fimg1:hover,#fimg2:hover,#fimg3:hover,#fimg4:hover{
+    transform: scale(1.1);
+    transition:ease-in-out;
+    transition-timing-function: ease-in-out;
+    transition: 0.3s;
+}
+.card{
+    width: 18rem;
+    margin-left:2%;
+    box-shadow: 0 0 8px 6px white;
+    margin-left:26px;
+   
+    
+}
+#fform{
+    align-items: center;
+    margin: 0 auto;
+    margin-left: 8%;
+}
+#prod1{
+    padding:30px;
+    display: flex;
+    margin:0 auto;
+}
+#fbtn{
+    width:150px;
+    text-align: center;
+    margin-left:7%;
+}
+#vbtn{
+    margin-left: 10px;
+}
+.loader {
+    margin: 5rem auto;
+    border: 8px solid #f2f2f2;
+    border-top: 8px solid #ff3700;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .loader1 {
+    margin: 20rem auto;
+    border: 8px solid #f2f2f2;
+    border-top: 8px solid #ff3700;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .hlogo{
+    border-radius: 50%;
+    width:50%;
+    margin:0 auto;
+    background-position:center ;
+    align-items: center;
+    background-repeat: no-repeat;
+    margin-left: 25%;
+
+  }
+  #price{
+    color:orange;
+  }
+  

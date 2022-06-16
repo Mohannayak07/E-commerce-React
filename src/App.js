@@ -6,12 +6,27 @@ import DisplayProduct from './components/DisplayProduct';
 import About from './components/About';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import {BrowserRouter as Router,Link,Switch,Route} from "react-router-dom"
-  
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom"
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+// import Filter from './components/Filter';
+import { useEffect,useState } from 'react';
 function App() {
+  const [loading,setLoading]=useState(false)
+  useEffect(()=>{
+    setLoading(true)
+    setTimeout(()=>{
+      setLoading(false)
+    },2000)
+  },[])
   return (
     <Router>
-      <Header/>
+      {
+        loading? <img src="../images/weblogo.png" alt='logo' className='hlogo'/>:<Header/>
+
+      }
+
+      
+
 
     <Switch>
       <Route exact path="/" component={Home}></Route>
