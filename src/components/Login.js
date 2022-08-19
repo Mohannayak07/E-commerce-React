@@ -1,38 +1,42 @@
 import React, { useState } from 'react'
-import {Link,useHistory} from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { useEffect } from 'react'
 import axios from 'axios'
-export default function Login() {
-    const history=useHistory()
-    const [email1,setEmail]=useState("")
-    const [pass,setPass]=useState("")
-    const [data,setData]=useState([])
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { auth } from '../FirebaseConfigs/Firebase'
+import { signInWithEmailAndPassword } from "firebase/auth"
 
-    useEffect(() => {
+export default function Login() {
+    const history = useHistory()
+    const [email, setEmail] = useState("")
+    const [pass, setPass] = useState("")
+    
+
+    
+    const validate = () => {
+        console.log(email)
+        console.log(pass)
+        if(email==="" || pass===""){
+            toast.error('Enter email or password')
+        }
+        else{
+            signInWithEmailAndPassword(auth, email, pass).then(res => {
         
-        getData()
-    }, [])
-    const getData=async ()=>{
-        await axios.get("http://localhost:2000/getusers")
-        .then(res=>{
-            // console.log(res.data)
-            setData(res.data)
-        })
-        .catch(err=> console.log('error while fetching data..'))
+                console.log(res)
+                // setLoading(false)
+                  toast.success('Login successful')
+                  setTimeout(()=>{
+                    // toast.success('Login successful')
+                    history.push('/')          
+                  },2000)
+              }).catch(err => {
+                toast.error(err.message)
+                console.log(err.message)
+                // setLoading(false)
+              })
         
-    }
-    const validate=()=>{
-        data.map(ele => {
-            return (ele.email===email1 && ele.password===pass) ? history.push('/') : alert('Enter valid details..')
-            // if(ele.email===email1 && ele.password===pass){
-            //     console.log('Login successfull..')
-            //     history.push('/');
-            // }
-            // else{
-            //     console.log('unauthorized user..')
-            //     alert('Please Enter Valid Details...')
-            // }
-        }); 
+        }
     }
     return (
         <>
@@ -44,12 +48,12 @@ export default function Login() {
 
                 <div className="form-group">
                     <label>Email</label>
-                    <input type="email" className="form-control" placeholder="Enter email" onChange={e=>setEmail(e.target.value)} />
+                    <input type="email" className="form-control" name="email" value={email} placeholder="Enter email" onChange={e => setEmail(e.target.value)} />
                 </div><br></br>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" onChange={e=>setPass(e.target.value)}/>
+                    <input type="password" className="form-control" name="pass" value={pass} placeholder="Enter password" onChange={e => setPass(e.target.value)} />
                 </div><br></br>
 
                 <div className="form-group">
@@ -63,9 +67,12 @@ export default function Login() {
                 {/* <p className="forgot-password text-right">
                     Forgot <Link to="/forget">password?</Link>
                 </p> */}
+                <br></br>
+               
                 <p className="forgot-password text-right">
                     Create Account <Link to="/signup">Signup?</Link>
                 </p>
+                <ToastContainer />
             </div>
         </>
 

@@ -137,4 +137,11 @@ span{
   #price{
     color:orange;
   }
+.gbtn{
+  margin:auto;
+  display: flex;
   
+  justify-content: center;
+  
+
+  }
