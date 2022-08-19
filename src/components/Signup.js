@@ -43,7 +43,7 @@ export default function Signup() {
       // console.log(value)
       createUserWithEmailAndPassword(auth, email, password).then(res => {
         
-        console.log(res)
+        // console.log(res)
         addDoc(collection(db, "users"), {
           username: name, email: email, password: password,initialcart:0
         }).then(res => {
@@ -61,7 +61,17 @@ export default function Signup() {
         })
       }).catch(err => {
         setLoading(false)
-        toast.error(err.message)
+        if(err.message==='Firebase: Error (auth/email-already-in-use).'){
+          toast.error('email-already-in-use')
+        }
+        else if(err.message==='Firebase: Password should be at least 6 characters (auth/weak-password).'){
+          toast.error('Password should be at least 6 characters')
+        }
+        else{
+          toast.error(err.message)
+
+        }
+        console.log(err.message)
         
       })
 

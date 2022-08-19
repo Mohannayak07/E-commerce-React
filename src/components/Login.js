@@ -6,33 +6,43 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { auth } from '../FirebaseConfigs/Firebase'
 import { signInWithEmailAndPassword } from "firebase/auth"
+import '../App.css';
 
 export default function Login() {
     const history = useHistory()
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
-    
+    const [loading, setLoading] = useState(false)
 
     
     const validate = () => {
-        console.log(email)
-        console.log(pass)
+        setLoading(true)
         if(email==="" || pass===""){
             toast.error('Enter email or password')
         }
         else{
             signInWithEmailAndPassword(auth, email, pass).then(res => {
         
-                console.log(res)
-                // setLoading(false)
+                // console.log(res)
+                setLoading(false)
                   toast.success('Login successful')
                   setTimeout(()=>{
                     // toast.success('Login successful')
                     history.push('/')          
                   },2000)
               }).catch(err => {
-                toast.error(err.message)
-                console.log(err.message)
+                setLoading(false)
+                if(err.message==='Firebase: Error (auth/user-not-found).'){
+                    toast.error('Invalid Email')
+                }
+                else if(err.message==='Firebase: Error (auth/wrong-password).'){
+                    toast.error('Invalid Password')
+                }
+                else{
+                    toast.error(err.message)
+                }
+
+                
                 // setLoading(false)
               })
         
@@ -41,7 +51,7 @@ export default function Login() {
     return (
         <>
 
-
+{loading && <div className="loader"></div>}
             <div id="loginform">
 
                 <h3 id="lh3"><i className="fa-solid fa-user"></i>&nbsp;Log in</h3>

@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Filter from "./Filter";
+
 export default function Home() {
+    
+       
     return (
         <div>
+            
             <Carousel>
                 <Carousel.Item interval={2000}>
                     <img

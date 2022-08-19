@@ -1,6 +1,47 @@
-import React from "react"
+import React, { useEffect, useState } from 'react';
 import {Link} from "react-router-dom"
+import { db } from '../FirebaseConfigs/Firebase'
+import { collection, getDocs,query,where } from 'firebase/firestore'
+import { auth } from '../FirebaseConfigs/Firebase'
+import { useHistory } from 'react-router-dom'
 export default function Header() {
+    const history = useHistory()
+    GetuserDetails()
+    
+    function GetuserDetails(){
+        const [user,setUser]=useState('')
+        const usercoll=collection(db,"users")
+
+        useEffect(() => {
+            auth.onAuthStateChanged(userlogged=>{
+                if(userlogged){
+                    const getUser=async()=>{
+                        const q=query(usercoll,where("email","==",userlogged.email))
+                        const data= await getDocs(q)
+                        console.log(q)
+                        setUser(data.docs.map(doc => ({...doc.data(),id:doc.id})))
+                    }
+                    getUser()
+                }
+                else{
+                    console.log("User not logged in")
+                    setUser(null)
+                }
+            })
+        },[])
+        return user
+    }
+    const loggeduser= GetuserDetails()
+    
+    // if(loggeduser){
+    //     console.log(loggeduser)
+    // }
+    const Logout=()=>{
+        auth.signOut().then(()=>{
+            console.log(loggeduser)
+            history.push("/login")
+        })
+    }
     return (
         <nav className="navbar navbar-expand-lg bg-light shadow">
             <div className="container-fluid">
@@ -11,7 +52,7 @@ export default function Header() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/"><i className='fa fa-home' ></i>Home</Link>
+                            <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/products">Products</Link>
@@ -24,10 +65,19 @@ export default function Header() {
                             <Link className="nav-link" to="/contact">Contact Us</Link>
                         </li>
                     </ul>
-                    
-                        <Link className="btn btn-dark me-2" type="submit" to="/login">Login&nbsp;<i className="fa-solid fa-right-to-bracket"></i></Link>
-                        <Link className="btn btn-dark me-2" type="submit" to="/signup">SignUp</Link>
-                        <Link to="/cart" className="btn btn-dark me-2" type="submit">Cart<i className="fa-solid fa-cart-shopping"></i></Link>
+                    {!loggeduser && <>
+                        <Link className="btn btn-outline-dark me-2" type="submit" to="/login">Login&nbsp;</Link>
+                        <Link className="btn btn-outline-dark me-2" type="submit" to="/signup">SignUp</Link>
+                        <Link to="/cart" className="btn btn-dark me-2" type="submit"><i className="fa-solid fa-cart-shopping"><sup><span className="cart-num">0</span></sup></i></Link>
+                    </>}
+                    {loggeduser && <>
+                    <button className="btn btn-outline-dark me-2" type="submit" onClick={Logout}>Log out</button>
+                    <Link to="/cart" className="btn btn-dark me-2" type="submit"><i className="fa-solid fa-cart-shopping"><sup><span className="cart-num">{loggeduser[0].initialcart}</span></sup></i></Link>
+                    </>}
+                   
+                        
+                        
+                        <Link to="/profile"><img src="../images/user.png" className='user'></img></Link>
                     
                 </div>
             </div>
