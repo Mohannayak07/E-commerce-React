@@ -31,10 +31,10 @@ export default function Products() {
         <div>
             {loading && <div className="loader"></div>}
             
-            <h1>Products Page...</h1>
+            <h1 className='prod-title'>TOP DEALS JUST FOR YOU</h1>
 
         
-            <div id="prod" className="row row-cols-1 row-cols-md-4 g-4">
+            <div id="prod" className="row row-cols-1 row-cols-md-4 g-1">
             {product.map((ele)=>{
               return (<div className="col">
               <div className="card h-100 p-3" key={ele.id}>
@@ -44,8 +44,8 @@ export default function Products() {
                 <div className="card-title">{ele.category}</div>
                 {/* <p className="card-text">{ele.description}</p> */}
                 <h5 className="card-title">${ele.price}</h5>
-                <Link to="#" className="btn btn-outline-primary">Add to cart</Link>
-                <Link to={`/products/${ele.id}`} id="btn2" className="btn btn-outline-dark" >View</Link>
+                {/* <Link to="#" className="btn btn-outline-primary">Add to cart</Link> */}
+                <Link to={`/products/${ele.id}`} id="btn2" className="btn btn-outline-dark" >More Details</Link>
               </div>
               </div>
             </div>

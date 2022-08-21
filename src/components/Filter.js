@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
 import {Link} from "react-router-dom"
 import axios from 'axios'
+
+
+    
 export default function Filter() {
     const [items,setItems]=useState([])
     const [loading,setLoading]=useState(false)
+    
     const filter=async (item)=>{
         // const item="jewelery"
         setLoading(true);
         await axios.get(`https://fakestoreapi.com/products/category/${item}`)
         .then(res=>{
             setItems(res.data)
-            console.log(res.data);
+            // console.log(res.data);
             setLoading(false);
         })
         .catch(err=>{
@@ -55,7 +59,7 @@ export default function Filter() {
                 <div className="card-title">{ele.category}</div>
                 {/* <p className="card-text">{ele.description}</p> */}
                 <h5 className="card-title">${ele.price}</h5>
-                <Link to="#" className="btn btn-outline-primary">Add to cart</Link>
+                <Link className="btn btn-outline-primary">Add to cart</Link>
                 <Link to={`/products/${ele.id}`} id="vbtn" className="btn btn-outline-dark" >View</Link>
               </div>
               </div>

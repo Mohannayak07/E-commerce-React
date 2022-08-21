@@ -64,6 +64,9 @@ export default function Signup() {
         if(err.message==='Firebase: Error (auth/email-already-in-use).'){
           toast.error('email-already-in-use')
         }
+        else if(err.message==='Firebase: Error (auth/invalid-email).'){
+          toast.error('invalid email id')
+        }
         else if(err.message==='Firebase: Password should be at least 6 characters (auth/weak-password).'){
           toast.error('Password should be at least 6 characters')
         }

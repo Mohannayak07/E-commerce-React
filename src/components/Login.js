@@ -18,7 +18,9 @@ export default function Login() {
     const validate = () => {
         setLoading(true)
         if(email==="" || pass===""){
+            setLoading(false)
             toast.error('Enter email or password')
+
         }
         else{
             signInWithEmailAndPassword(auth, email, pass).then(res => {
@@ -49,7 +51,7 @@ export default function Login() {
         }
     }
     return (
-        <>
+        <div className="login-container">
 
 {loading && <div className="loader"></div>}
             <div id="loginform">
@@ -84,7 +86,7 @@ export default function Login() {
                 </p>
                 <ToastContainer />
             </div>
-        </>
+        </div>
 
     )
 }

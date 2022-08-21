@@ -7,11 +7,15 @@ import About from './components/About';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Profile from './components/Profile';
+import CartData from './components/CartData';
+// import SimilarProducts from './components/SimilarProducts';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom"
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 // import Filter from './components/Filter';
 
 import { useEffect,useState } from 'react';
+import SimilarProducts from './components/SimilarProducts';
+
 function App() {
   const [loading,setLoading]=useState(false)
   useEffect(()=>{
@@ -39,6 +43,8 @@ function App() {
       <Route path="/signup" component={Signup}></Route>
       <Route path="/login" component={Login}></Route>
       <Route exact path="/profile" component={Profile}></Route>
+      <Route exact path="/cartdata" component={CartData}></Route>
+      <Route exact path="/similarproducts" component={SimilarProducts}></Route>
     </Switch>
     </Router>
   );

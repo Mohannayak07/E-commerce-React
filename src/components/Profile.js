@@ -5,7 +5,7 @@ import { auth } from '../FirebaseConfigs/Firebase'
 import '../App.css';
 function Profile() {
     const [loading,setLoading]=useState(false)
-    GetuserDetails()
+    // GetuserDetails()
     
     function GetuserDetails(){
         const [user,setUser]=useState('')
