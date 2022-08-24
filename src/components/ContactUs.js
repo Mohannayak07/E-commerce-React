@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -26,7 +27,7 @@ export default function ContactUs() {
 
     if (firstName && lastName && phone && email && address && message) {
       const res = fetch(
-        "https://reactfirebasewebsite-default-rtdb.firebaseio.com/userDataRecords.json",
+        "https://formspree.io/f/mrgdbkzj",
         {
           method: "POST",
           headers: {
@@ -60,6 +61,7 @@ export default function ContactUs() {
       toast.error("plz fill the data");
     }
   };
+  
 
   return (
     <>
@@ -88,7 +90,7 @@ export default function ContactUs() {
 
                 {/* right side contact form  */}
                 <div className="contact-rightside col-12 col-lg-7">
-                  <form method="POST">
+                  <form method="POST" action="https://formspree.io/f/mrgdbkzj">
                     <div className="row">
                       <div className="col-12 col-lg-6 contact-input-feild">
                         <input
@@ -167,7 +169,7 @@ export default function ContactUs() {
 
                     <div class="form-group">
                       {/* <label for="comment">Comment:</label> */}
-                      <textarea class="form-control" rows="5" id="comment" placeholder="Enter your Query" value={userData.message} onChange={postUserData}></textarea>
+                      <textarea class="form-control" rows="5" id="comment" placeholder="Enter your Query" name="message" value={userData.message} onChange={postUserData}></textarea>
                     </div><br></br>
 
 
@@ -188,8 +190,7 @@ export default function ContactUs() {
 
                     <button
                       type="submit"
-                      className="btn btn-outline-dark w-100"
-                      onClick={submitData}>
+                      className="btn btn-outline-dark w-100" onClick={submitData}>
                       Submit
                     </button>
                   </form>
