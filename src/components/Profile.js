@@ -37,7 +37,7 @@ function Profile() {
   return (
     <div>
          {loading && <div className="loader"></div>}
-        {loggeduser &&<> <span className="user-name"><h2>WELCOME {loggeduser[0].username}</h2></span>
+        {loggeduser &&<> <span className="user-name"><h1 className="user-name fw-bold">WELCOME {loggeduser[0].username}</h1></span>
         <div className='profile-container'>
         <img src="../images/user.png" className='profile-image'></img><br></br>
         <p>Name :&nbsp;<span style={{color:"#ff3700"}}>{loggeduser[0].username}</span></p>

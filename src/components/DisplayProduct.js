@@ -75,7 +75,7 @@ export default function DisplayProduct() {
     return (
         <>
             {loading && <div className="loader1"></div>}
-            <h2 className="disp-title">{category}</h2><br></br>
+            {!loading && <h2 className="disp-title">{category}</h2>}<br></br>
             <div id="dcontainer" className="container shadow-lg">
                 <div className="row">
                     <div className="col-md-5">

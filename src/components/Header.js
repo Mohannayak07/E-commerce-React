@@ -63,6 +63,7 @@ export default function Header() {
             // console.log(cartdata)
             setLen(cartArray.length)
             
+            
         }
         getdata()
     }
@@ -95,7 +96,7 @@ export default function Header() {
                             <Link className="nav-link" to='/about'>About</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/contact">Contact Us</Link>
+                            <Link className="nav-link" to="/contactus">Contact Us</Link>
                         </li>
                     </ul>
                     

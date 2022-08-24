@@ -83,8 +83,10 @@ export default function Signup() {
   }
 
   return (
-    <div className='spage'>
+    <>
+      <div className='spage'>
       {loading && <div className="loader"></div>}
+    <div className='signup-cont'>
       <div id="sform">
 
         <h3 id="lh3">Register</h3>
@@ -120,5 +122,7 @@ export default function Signup() {
         <ToastContainer />
       </div>
     </div>
+      </div>
+    </>
   )
 }

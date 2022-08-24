@@ -14,49 +14,57 @@ export default function Login() {
     const [pass, setPass] = useState("")
     const [loading, setLoading] = useState(false)
 
-    
+
     const validate = () => {
         setLoading(true)
-        if(email==="" || pass===""){
+        if (email === "" || pass === "") {
             setLoading(false)
             toast.error('Enter email or password')
 
         }
-        else{
+        else {
             signInWithEmailAndPassword(auth, email, pass).then(res => {
-        
+
                 // console.log(res)
                 setLoading(false)
-                  toast.success('Login successful')
-                  setTimeout(()=>{
+                toast.success('Login successful')
+                setTimeout(() => {
                     // toast.success('Login successful')
-                    history.push('/')          
-                  },2000)
-              }).catch(err => {
+                    history.push('/')
+                }, 2000)
+            }).catch(err => {
                 setLoading(false)
-                if(err.message==='Firebase: Error (auth/user-not-found).'){
+                if (err.message === 'Firebase: Error (auth/user-not-found).') {
                     toast.error('Invalid Email')
                 }
-                else if(err.message==='Firebase: Error (auth/wrong-password).'){
+                else if (err.message === 'Firebase: Error (auth/wrong-password).') {
                     toast.error('Invalid Password')
                 }
-                else{
+                else {
                     toast.error(err.message)
                 }
 
-                
+
                 // setLoading(false)
-              })
-        
+            })
+
         }
     }
     return (
+        <>
         <div className="login-container">
+           
 
-{loading && <div className="loader"></div>}
-            <div id="loginform">
+            {loading && <div className="loader"></div>}
+            <div className="loginform3">
+                <div className="loginform1">
+            <div className="row">
 
-                <h3 id="lh3"><i className="fa-solid fa-user"></i>&nbsp;Log in</h3>
+            <div class="col-sm-6">
+                <div id="loginform">
+            
+
+                <h3 id="lh3"><i className="fa-solid fa-user" style={{textAlign: 'center'}}></i>&nbsp;Log in</h3>
 
                 <div className="form-group">
                     <label>Email</label>
@@ -80,13 +88,24 @@ export default function Login() {
                     Forgot <Link to="/forget">password?</Link>
                 </p> */}
                 <br></br>
-               
+
                 <p className="forgot-password text-right">
                     Create Account <Link to="/signup">Signup?</Link>
                 </p>
                 <ToastContainer />
+                </div>
             </div>
+            <div class="col-sm-6">
+            <div className="imgc">
+                <img src="../images/login2.png" alt="login avatar" style={{width:'400px'}}></img>
+            </div>
+            </div>
+            </div>
+                </div>
+            </div>
+            
         </div>
+        </>
 
     )
 }

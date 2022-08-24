@@ -8,6 +8,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Profile from './components/Profile';
 import CartData from './components/CartData';
+import ContactUs from './components/ContactUs';
 // import SimilarProducts from './components/SimilarProducts';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom"
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
@@ -45,6 +46,7 @@ function App() {
       <Route exact path="/profile" component={Profile}></Route>
       <Route exact path="/cartdata" component={CartData}></Route>
       <Route exact path="/similarproducts" component={SimilarProducts}></Route>
+      <Route exact path="/contactus" component={ContactUs}></Route>
     </Switch>
     </Router>
   );

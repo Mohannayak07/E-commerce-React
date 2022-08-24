@@ -31,7 +31,7 @@ export default function Products() {
         <div>
             {loading && <div className="loader"></div>}
             
-            <h1 className='prod-title'>TOP DEALS JUST FOR YOU</h1>
+           {!loading && <h1 className='prod-title'>TOP DEALS JUST FOR YOU</h1>}
 
         
             <div id="prod" className="row row-cols-1 row-cols-md-4 g-1">
