@@ -13,8 +13,8 @@ export default function About(){
               <br></br>
               <br></br>
               {/* <br></br> */}
-              <p className="fw-bold" style={{color:'grey',fontSize:'18px'}}>
-              We believe that best way deliver a great user experience is by deeply understanding what people want to ove.Then deliver the featires,mesaages,and content thar are most helpful, relevant and timely. That's what makes users happy and loyal. Our company strives to deliver the tools ans support that helps companies deliver that great experience.We want our customers to be happy.so then our customers to be happy,so then our customers are happy and that makes us happy</p>
+              <p className="fw-bold text-secondary" style={{fontSize:'18px'}}>
+              We believe that best way deliver a <span style={{color:'#ff3700'}}>great user experience</span> is by deeply understanding what people want to ove.Then deliver the featires,mesaages,and content thar are most helpful, relevant and timely. That's what makes users happy and loyal. Our company strives to deliver the tools ans support that helps companies deliver that great experience.<span style={{color:'#ff3700'}}>We want our customers to be happy</span>.so then our customers to be happy,so then our customers are happy and that makes us happy</p>
             
             <br></br>
             <br></br>

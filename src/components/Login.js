@@ -55,8 +55,9 @@ export default function Login() {
         <div className="login-container">
            
 
-            {loading && <div className="loader"></div>}
+            
             <div className="loginform3">
+            {loading && <div className="loader"></div>}
                 <div className="loginform1">
             <div className="row">
 
@@ -64,7 +65,7 @@ export default function Login() {
                 <div id="loginform">
             
 
-                <h3 id="lh3"><i className="fa-solid fa-user" style={{textAlign: 'center'}}></i>&nbsp;Log in</h3>
+                <h3 id="lh3" className="fw-bold" style={{textDecoration: 'underline'}}><i className="fa-solid fa-user" style={{textAlign: 'center'}}></i>&nbsp;Log in</h3>
 
                 <div className="form-group">
                     <label>Email</label>

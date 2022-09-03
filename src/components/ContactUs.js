@@ -64,7 +64,7 @@ export default function ContactUs() {
   
 
   return (
-    <>
+    <div className="cont-container">
       <section className="contactus-section">
         <div className="container">
           <div className="row">
@@ -201,7 +201,7 @@ export default function ContactUs() {
         </div>
         <ToastContainer />
       </section>
-    </>
+    </div>
   );
 };
 

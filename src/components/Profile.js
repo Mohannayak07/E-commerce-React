@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { db } from '../FirebaseConfigs/Firebase'
 import { collection, getDocs,query,where } from 'firebase/firestore'
 import { auth } from '../FirebaseConfigs/Firebase'
+
 import '../App.css';
 function Profile() {
     const [loading,setLoading]=useState(false)
+    
     // GetuserDetails()
     
     function GetuserDetails(){
         const [user,setUser]=useState('')
+        
         const usercoll=collection(db,"users")
 
         useEffect(() => {
@@ -33,10 +36,12 @@ function Profile() {
         return user
     }
     const loggeduser= GetuserDetails()
+    
     // console.log(loggeduser)
   return (
     <div>
          {loading && <div className="loader"></div>}
+        
         {loggeduser &&<> <span className="user-name"><h1 className="user-name fw-bold">WELCOME {loggeduser[0].username}</h1></span>
         <div className='profile-container'>
         <img src="../images/user.png" className='profile-image'></img><br></br>

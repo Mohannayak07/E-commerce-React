@@ -8,7 +8,7 @@ export default function Header() {
     const history = useHistory()
     // GetuserDetails()
 
-    function GetuserDetails() {
+   function GetuserDetails() {
         const [user, setUser] = useState('')
         const usercoll = collection(db, "users")
 
@@ -111,7 +111,7 @@ export default function Header() {
                     </>}
                     
 
-
+                            
 
                     <Link to="/profile"><img src="../images/user.png" className='user'></img></Link>
 
@@ -121,3 +121,4 @@ export default function Header() {
         </nav>
     )
 }
+

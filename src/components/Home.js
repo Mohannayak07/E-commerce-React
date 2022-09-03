@@ -45,6 +45,18 @@ export default function Home() {
                         {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
                     </Carousel.Caption>
                 </Carousel.Item>
+                <Carousel.Item interval={2000}>
+                    <img
+                        className="d-block w-100"
+                        src="../images/freedel.jpg"
+                        alt="send slide"
+                        id="Himg3"
+                    />
+                    <Carousel.Caption>
+                        <h3 id="hh2">Fast and Free Delivery</h3>
+                        {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+                    </Carousel.Caption>
+                </Carousel.Item>
                 
             </Carousel>
 

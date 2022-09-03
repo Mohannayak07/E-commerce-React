@@ -43,9 +43,9 @@ export default function Products() {
                 <h5 className="card-title">{ele.title.substring(0,40)}</h5>
                 <div className="card-title">{ele.category}</div>
                 {/* <p className="card-text">{ele.description}</p> */}
-                <h5 className="card-title">${ele.price}</h5>
+                <h5 className="card-title"><i class="fa-solid fa-indian-rupee-sign">{Math.floor(ele.price*30)}</i></h5><br></br>
                 {/* <Link to="#" className="btn btn-outline-primary">Add to cart</Link> */}
-                <Link to={`/products/${ele.id}`} id="btn2" className="btn btn-outline-dark" >More Details</Link>
+                <Link to={`/products/${ele.id}`} id="btn2" className="btn btn-outline-dark" >More Details<i class="fa-solid fa-angle-down"></i></Link>
               </div>
               </div>
             </div>
