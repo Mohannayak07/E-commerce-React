@@ -1,6 +1,5 @@
 BrandFactory an ecommerce website
 ---------------------------------------------------------
-![BRAND](https://user-images.githubusercontent.com/97245908/190701792-63f4199a-b55a-46d8-98c3-132b1f6364bb.png)
 
 ![BRAND1](https://user-images.githubusercontent.com/97245908/190702106-b51d0720-acdc-48f4-b714-7e27af4ce1ea.png)
 
