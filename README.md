@@ -1,7 +1,8 @@
 BrandFactory an ecommerce website
 ---------------------------------------------------------
 A simple End to End Ecommerce website built using Reactjs and Firebase.
-website preview-> https://brandfactory07.netlify.app
+
+website preview-> https://brandfactory07.netlify.app(compatable with Desktop)
 
 Technologies used:
 -----------------------------------------------------
