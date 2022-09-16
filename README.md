@@ -18,6 +18,9 @@ A simple End to End Ecommerce website built using Reactjs and Firebase.
 ![Screenshot (104)](https://user-images.githubusercontent.com/97245908/190698248-b66d4be9-8fbe-442e-9ee7-4c2dd9922c75.png)
 ![Screenshot (103)](https://user-images.githubusercontent.com/97245908/190698379-092d6131-cdea-47ab-91d8-d02bc2b1073c.png)
 
+5)Cart Items
+-----------------------------------------------------------------------
+![Screenshot (105)](https://user-images.githubusercontent.com/97245908/190698855-ba377afa-7ad0-4ea1-8316-a994bde63fe3.png)
 
 
 
