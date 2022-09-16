@@ -1,5 +1,7 @@
 BrandFactory an ecommerce website
 ---------------------------------------------------------
+![BRAND](https://user-images.githubusercontent.com/97245908/190701792-63f4199a-b55a-46d8-98c3-132b1f6364bb.png)
+
 A simple End to End Ecommerce website built using Reactjs and Firebase.
 
 website preview-> https://brandfactory07.netlify.app (compatable with Desktop)
