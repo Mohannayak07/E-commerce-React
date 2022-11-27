@@ -60,7 +60,7 @@ export default function Home() {
                 
             </Carousel>
 
-            <h2 style={{textAlign:"center",padding:'4px',marginTop:'6px'}}>Categories...</h2>
+            <h2 style={{textAlign:"center",padding:'4px',marginTop:'8px',fontWeight:'bold',color:'#2d2d2d',textDecoration:'underline'}}>Featured Categories...</h2>
            <Filter></Filter>
         </div>
         
