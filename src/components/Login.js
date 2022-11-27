@@ -13,8 +13,12 @@ export default function Login() {
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
     const [loading, setLoading] = useState(false)
-
-
+    const [show,setShow]=useState(false);
+    const showPass=()=>{
+        setShow(!show);
+       
+    }
+ 
     const validate = () => {
         setLoading(true)
         if (email === "" || pass === "") {
@@ -67,14 +71,20 @@ export default function Login() {
 
                 <h3 id="lh3" className="fw-bold" style={{textDecoration: 'underline'}}><i className="fa-solid fa-user" style={{textAlign: 'center'}}></i>&nbsp;Log in</h3>
 
-                <div className="form-group">
+                <div className="form-group row">
                     <label>Email</label>
+                    <div className="col-md-11">
                     <input type="email" className="form-control" name="email" value={email} placeholder="Enter email" onChange={e => setEmail(e.target.value)} />
+                    </div>
                 </div><br></br>
 
-                <div className="form-group">
+                <div className="form-group row">
                     <label>Password</label>
-                    <input type="password" className="form-control" name="pass" value={pass} placeholder="Enter password" onChange={e => setPass(e.target.value)} />
+                    <div className="col-md-11">
+                    <input type={show ? "text" :"password"} className="form-control" name="pass" value={pass} placeholder="Enter password" onChange={e => setPass(e.target.value)} />
+                    </div>
+                    <div className="col-md-1">
+                    <button className="btn btn-dark" onClick={showPass}>{show ? <i class="fa-regular fa-eye"></i> : <i class="fa-solid fa-eye-slash"></i>}</button></div>
                 </div><br></br>
 
                 <div className="form-group">

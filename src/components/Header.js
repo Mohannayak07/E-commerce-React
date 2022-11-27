@@ -4,7 +4,10 @@ import { db } from '../FirebaseConfigs/Firebase'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import { auth } from '../FirebaseConfigs/Firebase'
 import { useHistory } from 'react-router-dom'
+import '../App.css'
+import '../Header.css'
 export default function Header() {
+      
     const history = useHistory()
     // GetuserDetails()
 
@@ -74,14 +77,14 @@ export default function Header() {
 
 
     return (
-        <nav className="navbar navbar-expand-lg bg-light shadow">
+        <nav className="navbar navbar-expand-lg bg-light shadow sticky-top">
             <div className="container-fluid">
                 <a className="navbar-brand fw-bold fs-4" href="/home">Brand<span>Factory</span></a>
                 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                            <Link className="nav-link" aria-current="page" to="/" id="active">Home</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/products">Products</Link>
@@ -111,7 +114,7 @@ export default function Header() {
                     </>}
                     
 
-                            
+                    
 
                     <Link to="/profile"><img src="../images/user.png" className='user'></img></Link>
 

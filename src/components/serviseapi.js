@@ -8,7 +8,7 @@ const serviceapi = [
     {
       id: 2,
       logo: "https://img.icons8.com/ios/72/vertical-settings-mixer--v1.png",
-      title: "Ease Of Use ",
+      title: "Ease To Use ",
       info: "Our website is very  easy to use and integrate between components",
     },
     {

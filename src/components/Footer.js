@@ -1,6 +1,13 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 const Footer = () => {
+  const [count,setCount]=useState(0)
+  useEffect(()=>{
+    axios.get('https://api.countapi.xyz/hit/brandfactory/count').then(res=>{
+      setCount(res.data.value);
+    })
+
+  },[])
   return (
     <>
       <footer>
@@ -71,7 +78,7 @@ const Footer = () => {
                     <div className="col-3 mx-auto">
                       <a
                         href="https://www.instagram.com"
-                        target="_thapa">
+                        target="#">
                         <i class="fab fa-instagram fontawesome-style"></i>
                       </a>
                     </div>
@@ -85,10 +92,15 @@ const Footer = () => {
                 </div>
               </div>
              <hr/>
-              <div className="mt-4">
-                <p className="main-hero-para text-center w-100">
-                  Copyright @ 2022 All rights reserved.
+              <div className="row">
+                <div className="col-md-6">
+                <p className=" main-hero-para text-center w-100">
+                ©Copyright @ 2022 All rights reserved.
                 </p>
+                </div>
+                <div className="col-md-6">
+                <p className="col-md-6"><i class="fa-regular fa-eye">Visitors count :&nbsp;</i><span style={{color:'white',fontWeight:'bold'}}>{count}</span></p>
+                </div>
               </div>
             </div>
           </div>

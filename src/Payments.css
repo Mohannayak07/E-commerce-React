@@ -1,0 +1,22 @@
+
+#check-out{
+    width:70%;
+    padding:20px;
+    margin:0 auto;
+    margin-top: 20px;
+    border: 1px solid black;
+}
+span i{
+    float: left;
+}
+.left-border{
+    padding:20px;
+    border:2px solid black;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color:lightgray;
+}
+.right-border{
+    padding:20px;
+    border: 2px solid black;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

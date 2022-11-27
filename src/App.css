@@ -290,17 +290,22 @@ span{
     
     
 }
-.service-main-container{
-  /* background-color: #f2f2f2; */
-}
+
 footer{
   margin-top: 40px;
-  background-color:#e3e3e3;  
+  background-color:#2d2d2d;  
   padding:20px;
-}
-.footer-head{
-  
+  color:rgb(194, 190, 190);
 }
 li a{
   text-decoration: none;
+  color:white;
+}
+#serv-container{
+  width:90%;
+  margin:0 auto;
+}
+
+.banner-sec{
+  margin:40 0;
 }

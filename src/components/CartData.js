@@ -7,6 +7,7 @@ import CartCard from './CartCard'
 
 function CartData() {
     const [quantity,setQuantity]=useState(1);
+    const [loading,setLoading]=useState(true);
     function GetcartDetails(){
         const [user,setUser]=useState('')
         const usercoll=collection(db,"users")
@@ -32,12 +33,15 @@ function CartData() {
         },[])
         return user
     }
+    // setLoading(false)
     const cartdata= GetcartDetails()
 
     console.log(cartdata)
     
-    // console.log(cartdata)
-    
+    console.log(cartdata)
+    setTimeout(() => {
+        setLoading(false);
+    },100)
     
 
     var price=0;
@@ -46,6 +50,7 @@ function CartData() {
             
             {/* {console.log('inside return')}
             {console.log(cartdata)} */}
+            {loading && <div className="loader"></div>}
             {cartdata && <div><h2 style={{textAlign: 'center',marginTop:'10px',padding:'10px',backgroundColor:'yellow'}}>Your Cart Items</h2>
                 <div className="row row-cols-1 row-cols-md-4 g-0" >
                     
@@ -82,10 +87,10 @@ function CartData() {
                         )
                     })}
                 </div>
-                <div className='price-cont'>
+              {cartdata &&  <div className='price-cont'>
                 <h3 style={{padding: '10px',marginRight:'20px'}}>Total price:<i class="fa-solid fa-indian-rupee-sign"></i>{Math.floor(price*30)}</h3>
                 <Link style={{marginLeft: '10px'}} className='btn btn-primary' to='/check-out'>Place order</Link>
-                </div>
+                </div>}
             </div>
             
             }

@@ -10,7 +10,7 @@ import Profile from './components/Profile';
 import CartData from './components/CartData';
 import ContactUs from './components/ContactUs';
 import Footer from './components/Footer';
-import { Payment } from './components/Payment';
+import  Payment  from './components/Payment';
 // import SimilarProducts from './components/SimilarProducts';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom"
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
