@@ -12,6 +12,7 @@ import ContactUs from './components/ContactUs';
 import Footer from './components/Footer';
 import  Payment  from './components/Payment';
 // import SimilarProducts from './components/SimilarProducts';
+import Addnewproducts from './components/Addnewproducts';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom"
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 // import Filter from './components/Filter';
@@ -50,6 +51,7 @@ function App() {
       <Route exact path="/similarproducts" component={SimilarProducts}></Route>
       <Route exact path="/contactus" component={ContactUs}></Route>
       <Route exact path="/check-out" component={Payment}></Route>
+      <Route exact path="/add-products" component={Addnewproducts}></Route>
     </Switch>
     <Footer/>
     </Router>

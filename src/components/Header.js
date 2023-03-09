@@ -6,6 +6,7 @@ import { auth } from '../FirebaseConfigs/Firebase'
 import { useHistory } from 'react-router-dom'
 import '../App.css'
 import '../Header.css'
+import { slide as Menu } from 'react-burger-menu'
 export default function Header() {
       
     const history = useHistory()
@@ -122,6 +123,7 @@ export default function Header() {
             </div>
             
         </nav>
+       
     )
 }
 

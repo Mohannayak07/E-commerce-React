@@ -1,10 +1,13 @@
 
 #check-out{
-    width:70%;
+    width:80%;
     padding:20px;
     margin:0 auto;
     margin-top: 20px;
     border: 1px solid black;
+}
+.row-upper{
+    margin-left: 10px;
 }
 span i{
     float: left;
@@ -14,9 +17,41 @@ span i{
     border:2px solid black;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     color:lightgray;
+    border-radius: 8px;
 }
 .right-border{
     padding:20px;
     border: 2px solid black;
+    border-radius: 8px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+.form-control {
+    border-bottom: 2px solid #eee !important;
+    border: none;
+    font-weight: 600
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #8bbafe;
+    outline: 0;
+    box-shadow: none;
+    border-radius: 0px;
+    border-bottom: 2px solid blue !important;
+}
+
+
+
+.inputbox {
+    position: relative;
+    margin-bottom: 20px;
+    width: 90%
+}
+.payment-card{
+    border:2px solid black;
+    padding:20px;
+    border-radius: 6px;
+}
+
+

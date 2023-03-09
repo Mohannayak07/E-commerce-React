@@ -49,7 +49,7 @@
     text-align: center;
 }
 #Lbtn,#sbtn{
-    width: 100%;
+    width: 92%;
 }
 #prod{
   margin-bottom: 30px;
@@ -220,10 +220,12 @@ span{
 
 }
 .disp-title{
-  background-color: yellow;
+  background-color: black;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 20px;
   padding:8px;
+  color:white;
+  margin-bottom: 10px;
 }
 .cart-msg{
   background-color: yellow;
@@ -236,10 +238,12 @@ span{
   
 }
 .prod-title{
-  background-color: yellow;
+  background-color: black;
   margin-top: 10px;
   text-align: center;
   padding:10px;
+  color:white;
+  margin-bottom: 20px;
 }
 /* .contactus-section{
   
@@ -309,3 +313,4 @@ li a{
 .banner-sec{
   margin:40 0;
 }
+

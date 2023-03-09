@@ -87,14 +87,10 @@ export default function Login() {
                     <button className="btn btn-dark" onClick={showPass}>{show ? <i class="fa-regular fa-eye"></i> : <i class="fa-solid fa-eye-slash"></i>}</button></div>
                 </div><br></br>
 
-                <div className="form-group">
-                    <div className="custom-control custom-checkbox">
-                        <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                    </div>
-                </div><br></br>
+                <br></br>
 
                 <button type="submit" className="btn btn-dark btn-lg btn-block" id="Lbtn" onClick={validate}>Sign in</button><br></br>
+                
                 {/* <p className="forgot-password text-right">
                     Forgot <Link to="/forget">password?</Link>
                 </p> */}
