@@ -1,0 +1,118 @@
+import React, {useEffect } from "react";
+import { useState } from "react";
+import { Container, Nav, Tab, Col, Row } from "react-bootstrap";
+import axios from 'axios'
+// import ClientsAdminPage from "../components/ClientsAdminPage";
+// import DashboardProducts from "../components/DashboardProducts";
+// import OrdersAdminPage from "../components/OrdersAdminPage";
+function AdminDashboard() {
+    const [loading, setLoading] = useState(false)
+    const [products, setproducts] = useState()
+    const [warning,setWarning]=useState(false)
+    const [error, setError] = useState(false)
+    const displayProducts = async () => {
+        setLoading(true);
+        await axios.get('http://localhost:2000/products')
+            .then(res => {
+
+                console.log(res.data);
+                setproducts(res.data)
+                setLoading(false);
+                // setLoading(false);
+            })
+            .catch(err => {
+                console.log(err)
+                setLoading(false);
+            })
+    }
+// delete products
+
+const deleteProduct=(id)=>{
+    axios.delete(`http://localhost:2000/delete-product/${id}`)
+    .then((res)=>{
+        setWarning(true)
+        displayProducts();
+        setInterval(() => {
+            setWarning(false)
+        }, 2000);
+    })
+    .catch((err)=>{
+        setError(true)
+        setInterval(() => {
+            setError(false)
+        }, 2000);
+    })
+}
+
+    useEffect(()=>{
+        displayProducts();
+    },[])
+
+    return (
+        <Container>
+             {loading && <div className='loader'></div>}
+            {warning && <div className="alert alert-success" role="alert" style={{marginTop:'10px'}}>
+                Product Deleted Successfully..
+            </div>}
+            {error && <div className="alert alert-success" role="alert" style={{marginTop:'10px'}}>
+                Error in Deleting Product..
+            </div>}
+            <Tab.Container defaultActiveKey="products">
+                <h3 style={{textAlign:'center',marginTop:'18px',marginBottom:'20px'}}>Admin Dashboard</h3>
+                <Row>
+                    <Col sm={3} className='admin-controls'>
+                        <Nav variant="pills" className="flex-column" style={{cursor:'pointer',marginTop:'20px',marginBottom:'10px'}}>
+                            <Nav.Item>
+                                <Nav.Link eventKey="products" onClick={()=>displayProducts()}>Products</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link eventKey="orders">Orders</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link eventKey="clients">Clients</Nav.Link>
+                            </Nav.Item>
+                        </Nav>
+                    </Col>
+                    <Col sm={9}>
+                        <Tab.Content>
+                            <Tab.Pane eventKey="products">
+                               {products && products.map((item,index)=>{
+                                     console.log(item)
+                                return (
+                                   
+                                    <div className="adminproductscontainer" key={index}>
+                                        <Row>
+                                        <Col sm={4}>
+                                        <div><img src={item.imageurl}  height='100'></img></div>
+                                        </Col>
+                                        <Col sm={8}>
+                                        <div style={{fontWeight:'700'}}>{item.name}</div>
+                                        <div style={{marginTop:'6px'}}><i class="fa-solid fa-indian-rupee-sign"></i>{item.price}
+                                        </div><br></br>
+                                       
+                                        <div><button className="btn btn-danger" onClick={()=>deleteProduct(item.pid)}>Delete</button>
+                                        <button className="btn btn-warning" style={{marginLeft:'10px'}}>Update</button>
+                                        </div>
+                                        </Col>
+                                        </Row>
+                                       
+                                        
+                                    </div>
+                                )
+                               })}
+                            </Tab.Pane>
+                            {/* <Tab.Pane eventKey="orders">
+                                <OrdersAdminPage />
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="clients">
+                                <ClientsAdminPage />
+                            </Tab.Pane> */}
+                        </Tab.Content>
+                    </Col>
+                </Row>
+            </Tab.Container>
+        </Container>
+    );
+}
+
+export default AdminDashboard;
