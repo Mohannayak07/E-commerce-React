@@ -12,6 +12,7 @@ Technologies used:
 -----------------------------------------------------
 =>Frontend->Reactjs,Bootstrap, 
 Database->Firebase and mongoDB, 
+Backend -> Nodejs,Express
 Authentication->Firebase Authentication
 
 1)Home page:
