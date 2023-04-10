@@ -87,8 +87,8 @@ function Addnewproducts() {
            {loading && <div className="loader"></div>}
             <Row>
                 <Col md={6} className="new-product__form--container">
-                    <Form style={{ width: "100%" }} onSubmit={handleSubmit}>
-                        <h1 className="mt-4">Create a product</h1>
+                    <Form style={{ width: "100%",paddingLeft:'12px',borderRadius:'6px' }} onSubmit={handleSubmit}>
+                        <h4 className="mt-4">Add product</h4>
                         {/* {isSuccess && <Alert variant="success">Product created with succcess</Alert>} */}
                         {/* {isError && <Alert variant="danger">{error.data}</Alert>} */}
                         <Form.Group className="mb-3">
@@ -127,13 +127,15 @@ function Addnewproducts() {
                            
                         </Form.Group>
 
-                        <Form.Group>
+                        <Form.Group style={{paddingBottom:'14px'}}>
                           {isfilled() ? <Button type="submit">Add Product</Button> : <Button type="submit" disabled>Add Product</Button>}
                             
                         </Form.Group>
                     </Form>
                 </Col>
-                <Col md={6} className="new-product__image--container"></Col>
+                <Col md={6} className="new-product__image--container">
+                      <img src="../images/intro2.jpg" alt="intro" style={{width:'100%',height:'100%',marginLeft:'11px'}}></img>
+                </Col>
             </Row>
             <ToastContainer />
         </Container>

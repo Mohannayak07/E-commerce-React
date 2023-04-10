@@ -14,15 +14,19 @@ import  Payment  from './components/Payment';
 // import SimilarProducts from './components/SimilarProducts';
 import Addnewproducts from './components/Addnewproducts';
 import AdminDashboard from './components/AdminDashboard';
+import Orders from './components/Orders';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom"
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import Ordersuccess from './components/Ordersuccess';
 // import Filter from './components/Filter';
 
+import { createContext } from 'react';
 import { useEffect,useState } from 'react';
 import SimilarProducts from './components/SimilarProducts';
-
+export const adminContext = createContext()
 function App() {
   const [loading,setLoading]=useState(false)
+  const[admin,setAdmin]=useState(false)
   useEffect(()=>{
     setLoading(true)
     setTimeout(()=>{
@@ -30,6 +34,7 @@ function App() {
     },2000)
   },[])
   return (
+    <adminContext.Provider value={{admin,setAdmin}}>
     <Router>
       {
         loading? <img src="../images/weblogo.png" alt='logo' className='hlogo'/>:<Header/>
@@ -41,6 +46,7 @@ function App() {
 
 
     <Switch>
+      
       <Route exact path="/" component={Home}></Route>
       <Route exact path="/products" component={Products}></Route>
       <Route exact path="/products/:id" component={DisplayProduct}></Route>
@@ -54,9 +60,14 @@ function App() {
       <Route exact path="/check-out" component={Payment}></Route>
       <Route exact path="/add-products" component={Addnewproducts}></Route>
       <Route exact path="/admin" component={AdminDashboard}></Route>
+      <Route exact path="/order-success" component={Ordersuccess}></Route>
+      <Route exact path="/admin/orders" component={Orders}></Route>
+
+      
     </Switch>
     <Footer/>
     </Router>
+    </adminContext.Provider>
     
   );
 }

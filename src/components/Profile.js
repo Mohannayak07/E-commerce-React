@@ -47,6 +47,7 @@ function Profile() {
         <img src="../images/user.png" className='profile-image'></img><br></br>
         <p>Name :&nbsp;<span style={{color:"#ff3700"}}>{loggeduser[0].username}</span></p>
         <p>Email Id :&nbsp;<span style={{color:"#ff3700"}}>{loggeduser[0].email}</span></p>
+        <button className='btn btn-dark' style={{width:'100%'}}>Orders</button>
             
             </div>    
         

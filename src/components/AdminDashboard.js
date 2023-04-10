@@ -2,20 +2,28 @@ import React, {useEffect } from "react";
 import { useState } from "react";
 import { Container, Nav, Tab, Col, Row } from "react-bootstrap";
 import axios from 'axios'
+import Orders from "./Orders";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 // import ClientsAdminPage from "../components/ClientsAdminPage";
 // import DashboardProducts from "../components/DashboardProducts";
 // import OrdersAdminPage from "../components/OrdersAdminPage";
+import Addnewproducts from "./Addnewproducts";
 function AdminDashboard() {
+    const history=useHistory()
     const [loading, setLoading] = useState(false)
     const [products, setproducts] = useState()
     const [warning,setWarning]=useState(false)
     const [error, setError] = useState(false)
+    const [newproduct, setNewproduct] = useState(false)
+   
+    
     const displayProducts = async () => {
+        setNewproduct(false)
         setLoading(true);
         await axios.get('http://localhost:2000/products')
             .then(res => {
 
-                console.log(res.data);
+                // console.log(res.data);
                 setproducts(res.data)
                 setLoading(false);
                 // setLoading(false);
@@ -25,6 +33,9 @@ function AdminDashboard() {
                 setLoading(false);
             })
     }
+
+   
+    
 // delete products
 
 const deleteProduct=(id)=>{
@@ -43,6 +54,11 @@ const deleteProduct=(id)=>{
         }, 2000);
     })
 }
+const handleorders=()=>{
+    setNewproduct(false)
+    history.push('/admin/orders')
+
+}
 
     useEffect(()=>{
         displayProducts();
@@ -59,6 +75,7 @@ const deleteProduct=(id)=>{
             </div>}
             <Tab.Container defaultActiveKey="products">
                 <h3 style={{textAlign:'center',marginTop:'18px',marginBottom:'20px'}}>Admin Dashboard</h3>
+                
                 <Row>
                     <Col sm={3} className='admin-controls'>
                         <Nav variant="pills" className="flex-column" style={{cursor:'pointer',marginTop:'20px',marginBottom:'10px'}}>
@@ -66,18 +83,29 @@ const deleteProduct=(id)=>{
                                 <Nav.Link eventKey="products" onClick={()=>displayProducts()}>Products</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link eventKey="orders">Orders</Nav.Link>
+                                <Nav.Link eventKey="addproduct" onClick={()=>setNewproduct(true)}>Add Products</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link eventKey="clients">Clients</Nav.Link>
+                                <Nav.Link eventKey="orders" onClick={()=>handleorders()}>Orders</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link eventKey="clients" onClick={()=>setNewproduct(false)}>Clients</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Col>
+                    {newproduct &&
+                        <Col sm={9}>
+                            <div style={{boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'}}>
+                                <Addnewproducts />
+                            </div>
+                        </Col>
+                    }
+                   
                     <Col sm={9}>
                         <Tab.Content>
                             <Tab.Pane eventKey="products">
                                {products && products.map((item,index)=>{
-                                     console.log(item)
+                                    //  console.log(item)
                                 return (
                                    
                                     <div className="adminproductscontainer" key={index}>
@@ -100,6 +128,8 @@ const deleteProduct=(id)=>{
                                     </div>
                                 )
                                })}
+
+
                             </Tab.Pane>
                             {/* <Tab.Pane eventKey="orders">
                                 <OrdersAdminPage />
@@ -111,6 +141,7 @@ const deleteProduct=(id)=>{
                     </Col>
                 </Row>
             </Tab.Container>
+            
         </Container>
     );
 }

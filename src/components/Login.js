@@ -7,13 +7,18 @@ import 'react-toastify/dist/ReactToastify.css'
 import { auth } from '../FirebaseConfigs/Firebase'
 import { signInWithEmailAndPassword } from "firebase/auth"
 import '../App.css';
-
+import { adminContext } from '../App'
+import { useContext } from 'react'
 export default function Login() {
+
     const history = useHistory()
+    const {admin,setAdmin}=useContext(adminContext)
+    console.log(admin)
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
     const [loading, setLoading] = useState(false)
     const [show,setShow]=useState(false);
+    // const [admin,setAdmin] = useState(false)
     const showPass=()=>{
         setShow(!show);
        
@@ -25,6 +30,16 @@ export default function Login() {
             setLoading(false)
             toast.error('Enter email or password')
 
+        }
+        else if(email===process.env.REACT_APP_Adminemail && pass===process.env.REACT_APP_AdminPassword){
+            setLoading(false)
+            setAdmin(true)
+            toast.success('Login successful')
+            setTimeout(() => {
+                // toast.success('Login successful')
+                history.push('/admin')
+            }, 2000)
+            
         }
         else {
             signInWithEmailAndPassword(auth, email, pass).then(res => {

@@ -6,10 +6,13 @@ import { auth } from '../FirebaseConfigs/Firebase'
 import { useHistory } from 'react-router-dom'
 import '../App.css'
 import '../Header.css'
+import { useContext } from 'react';
+import { adminContext } from '../App';
 import { slide as Menu } from 'react-burger-menu'
 export default function Header() {
       
     const history = useHistory()
+    const {admin,setAdmin}=useContext(adminContext)
     // GetuserDetails()
 
    function GetuserDetails() {
@@ -46,6 +49,10 @@ export default function Header() {
             console.log(loggeduser)
             history.push("/login")
         })
+    }
+    const Adminlogout=()=>{
+        setAdmin(false)
+        history.push("/login")
     }
     // const [cartItem, setCartItem] = useState([])
     const [len, setLen] = useState(0)
@@ -104,7 +111,7 @@ export default function Header() {
                         </li>
                     </ul>
                     
-                    {!loggeduser && <>
+                    {!loggeduser && !admin &&<>
                         <Link className="btn btn-outline-dark me-2" type="submit" to="/login">Login&nbsp;</Link>
                         <Link className="btn btn-outline-dark me-2" type="submit" to="/signup">SignUp</Link>
                         <Link to="/cartdata" className="btn btn-dark me-2" type="submit"><i className="fa-solid fa-cart-shopping"><sup><span className="cart-num">0</span></sup></i></Link>
@@ -112,6 +119,10 @@ export default function Header() {
                     {loggeduser && <>
                         <button className="btn btn-outline-dark me-2" type="submit" onClick={Logout}>Log out</button>
                         <Link to="/cartdata" className="btn btn-dark me-2" type="submit"><i className="fa-solid fa-cart-shopping"><sup><span className="cart-num">{len}</span></sup></i></Link>
+                    </>}
+                    {admin && <>
+                        <button className="btn btn-outline-dark me-2" type="submit" onClick={Adminlogout}>Log out</button>
+                        {/* <Link to="/cartdata" className="btn btn-dark me-2" type="submit"><i className="fa-solid fa-cart-shopping"><sup><span className="cart-num">{len}</span></sup></i></Link> */}
                     </>}
                     
 
