@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 function Ordersuccess() {
+  const history = useHistory()
     const orderId=useLocation().state.data
     const [loading,setLoading] = useState(true)
    setTimeout(()=>{
     setLoading(false)
    },2000)
-    
+  const redirect=()=>{
+    history.push('/profile')
+  }
   return (
     <>
     {loading && <div className="loader"></div>}
@@ -24,7 +28,7 @@ function Ordersuccess() {
                 <p style={{color:'black'}}>#Order ID : {orderId}</p>           
         </div>
         <center>
-            <button className='btn btn-dark'>Track order</button>
+            <button className='btn btn-dark' onClick={()=>redirect()}>Track order</button>
         </center>
         <br></br>
     </div>}

@@ -65,9 +65,9 @@ function Addnewproducts() {
           setDescription("")
           setImageurl("")
           setPrice("")
-          setInterval(() => {
-            history.push('/')
-          }, 2000);
+          // setInterval(() => {
+          //   history.push('/')
+          // }, 2000);
           
         })
         .catch((err)=>{

@@ -4,7 +4,7 @@ function CartCard({ item }) {
   console.log(item[0])
   return (
     <div>
-      <h2 style={{color:'#ffffff',textAlign:'center',padding:'20px',backgroundColor:'#ff3700'}}>Your Cart Items</h2><br></br>
+      <h2 style={{color:'#ffffff',textAlign:'center',padding:'20px',backgroundColor:'#fa4251'}}>Your Cart Items</h2><br></br>
       {console.log('inside cartcard')}
       {console.log(typeof(item))}
 

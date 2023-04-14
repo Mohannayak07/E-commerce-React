@@ -17,11 +17,12 @@ export default function DisplayProduct() {
     const [loading, setLoading] = useState(false)
     const [fetched, setFetched] = useState(false);
     const [items, setItems] = useState([])
+    const [processing, setProcessing] = useState(false)
     useEffect(() => {
         GetProduct();
     }, [])
     // GetuserDetails()
-
+    var cartItems
     function GetuserDetails() {
         const [user, setUser] = useState('')
         const usercoll = collection(db, "users")
@@ -31,11 +32,15 @@ export default function DisplayProduct() {
                 if (userlogged) {
                     const getUser = async () => {
                         const q = query(usercoll, where("email", "==", userlogged.email))
+                        const q1=query(collection(db,`cart-${userlogged.email}`))
                         const data = await getDocs(q)
+                        const data1= await getDocs(q1)
                         // console.log(q)
+                        setItems(data1.docs.map(doc => ({...doc.data(),id:doc.id})))
                         setUser(data.docs.map(doc => ({ ...doc.data(), id: doc.id })))
+                        return items
                     }
-                    getUser()
+                 getUser()
                 }
                 else {
                     console.log("User not logged in")
@@ -46,23 +51,58 @@ export default function DisplayProduct() {
         return user
     }
     const loggeduser = GetuserDetails()
-    const AddtoCart = () => {
-        if (loggeduser) {
-            addDoc(collection(db, `cart-${loggeduser[0].email}`),
-                { data, quantity: 1 }
-            ).then(() => {
+    const isPresent=()=>{
+        var flag=false
+        console.log(typeof id)
+        items.forEach((ele,i)=>{
+            console.log(ele.data.id===Number(id))
+            if(ele.data.id===Number(id)){
+                flag=true
+            }
+        })
+        if(flag===true){
+            return true
+        }
+        else{
 
-                toast.success('Added to cart successfully')
-                window.location.reload(false);
-            })
-                .catch((err) => {
-                    toast.error(err.message)
+            return false
+        }
+       
+
+    }
+    // console.log(loggeduser)
+
+    const AddtoCart = () => {
+        setProcessing(true)
+        if (loggeduser) {
+            setProcessing(true)
+            const flag=isPresent()
+            console.log(flag)
+            if(flag===false){
+
+                addDoc(collection(db, `cart-${loggeduser[0].email}`),
+                    { data, quantity: 1 }
+                ).then(() => {
+                    setProcessing(false)
+                    toast.success('Added to cart successfully')
+                    window.location.reload(false);
                 })
+                    .catch((err) => {
+                        setProcessing(false)
+                        toast.error(err.message)
+                    })
+            }
+            else{
+                setProcessing(false)
+                toast.warning('Item already exist in cart')
+                
+            }
         }
         else {
+            setProcessing(false)
             toast.error('Please Login to add to cart')
         }
-
+        
 
     }
 
@@ -71,7 +111,7 @@ export default function DisplayProduct() {
         await axios.get(`https://fakestoreapi.com/products/${id}`)
             .then((res) => {
                 setData(res.data)
-                console.log(res.data);
+                // console.log(res.data);
 
                 setLoading(false)
                 setFetched(true)
@@ -88,16 +128,17 @@ export default function DisplayProduct() {
                 <div id="dcontainer" className="container shadow-lg">
                     <div className="row">
                         <div className="col-md-5">
-                            <img src={image} className="img-fluid rounded-start" alt={title} height="400px" width="400px" />
+                            <img src={image} className="img-fluid rounded-start" alt={title} height="300px" width="300px" />
                         </div>
                         <div className="col-md-5">
                             {/* <div className="card-body"> */}
                             <h3 className="card-title">{title}</h3>
                             <div className="card-title fw-bold">{category}</div>
                             <p className="card-text">{description}</p>
-                            <h5 className="card-title" style={{ color: '#ff3700' }}>Price: <i class="fa-solid fa-indian-rupee-sign"></i>{Math.floor(price * 30)}</h5>
+                            <h5 className="card-title" style={{ color: '#fa4251' }}>Price: <i class="fa-solid fa-indian-rupee-sign"></i>{Math.floor(price * 30)}</h5>
                             <h5 className="card-title mt-2" id="rating">Rating: {rating && data.rating.rate}<i class="fa-regular fa-star"></i>&nbsp;({rating && data.rating.count})</h5><br></br>
-                            <button onClick={AddtoCart} className="btn btn-outline-dark">Add to cart<i className="fa fa-shopping-cart" ></i></button>
+                           {processing && <button className="btn btn-outline-dark" disabled>Processing...</button>}
+                           {!processing && <button onClick={AddtoCart} className="btn btn-outline-dark">Add to cart<i className="fa fa-shopping-cart" ></i></button>}  
                             <br></br><br></br><p style={{ color: 'green' }}>Pay on delivery is available<br></br>Easy 30 days returns and exchanges available</p>
                             <img style={{ width: '15%' }} src='https://t3.ftcdn.net/jpg/02/96/05/46/240_F_296054631_1SbautqneleQG40Ewtkice8RkM4bTNsK.jpg' alt="alt"></img>&nbsp;&nbsp;
                             <img style={{ width: '18%' }} src='https://t3.ftcdn.net/jpg/03/50/57/72/240_F_350577297_LnBv07VuyrK5MIFWr0OXRNlUHuxQOIrZ.jpg' alt='quality-check'></img>

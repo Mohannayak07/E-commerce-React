@@ -72,13 +72,13 @@ export default function Filter() {
         {items.map((ele) => {
           return (<div className="col">
 
-            <div className="card h-100 p-3" key={ele.id}>
-              <img src={ele.image} className="card-img-top" alt="Product img" height="250px" /><hr></hr>
+            <div className="card p-3" key={ele.id}>
+              <img src={ele.image} className="card-img-top" alt="Product img" height="180px" width="80%" /><hr></hr>
               <div className="card-body">
-                <h5 className="card-title">{ele.title.substring(0, 40)}</h5>
+                <h5 className="card-title" style={{textOverflow: 'ellipsis',overflow: 'hidden',whiteSpace: 'nowrap'}}>{ele.title.substring(0, 40)}</h5>
                 <div className="card-title">{ele.category}</div>
                 {/* <p className="card-text">{ele.description}</p> */}
-                <h5 className="card-title">${ele.price}</h5>
+                <h5 className="card-title"><i class="fa-solid fa-indian-rupee-sign">{Math.floor(ele.price*30)}</i></h5>
                 {/* <Link className="btn btn-outline-primary">Add to cart</Link> */}
                 <Link to={`/products/${ele.id}`} id="vbtn" className="btn btn-outline-dark" >More Details<i class="fa-solid fa-angle-down"></i></Link>
               </div>
@@ -138,7 +138,7 @@ export default function Filter() {
           <h4>Sign Up For Newsletter</h4>
           <p>Get Email updates about our latest shop and <span>Special Offers.</span></p>
         </div>
-        <div className='form'>
+        <div className='form' id="subscribe-email">
           <input type="email" placeholder='enter your email address'></input>
           <button>Signup</button>
 

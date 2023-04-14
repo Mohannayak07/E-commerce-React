@@ -104,7 +104,7 @@ export default function Login() {
 
                 <br></br>
 
-                <button type="submit" className="btn btn-dark btn-lg btn-block" id="Lbtn" onClick={validate}>Sign in</button><br></br>
+                <button type="submit" className="btn btn-dark btn-lg btn-block" id="Lbtn" onClick={validate} style={{background:'#fa4251',border:'none'}}>Sign in</button><br></br>
                 
                 {/* <p className="forgot-password text-right">
                     Forgot <Link to="/forget">password?</Link>
@@ -119,7 +119,7 @@ export default function Login() {
             </div>
             <div class="col-sm-6">
             <div className="imgc">
-                <img src="../images/login2.png" alt="login avatar" style={{width:'400px'}}></img>
+                <img src="../images/login2.png" alt="login avatar" id="login-avatar"></img>
             </div>
             </div>
             </div>

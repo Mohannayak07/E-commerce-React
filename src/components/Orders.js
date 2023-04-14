@@ -42,10 +42,10 @@ function Orders() {
     <div style={{width: '90%',margin: '0 auto',padding: '10px',marginTop: '20px',marginBottom: '300px',}}>
        <Link to={'/admin'} style={{color:'black'}}><i class="fa-solid fa-arrow-left" style={{fontSize:'22px'}}></i></Link> 
         <h4 style={{textAlign:'center'}}>Manage orders</h4><br></br>
-        <div style={{background:'white',boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',padding:'20px'}}>
-        <table className="table table-hover">
-        <thead>
-        <tr>
+        <div style={{background:'white',boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',}}>
+        <table className="table table-hover" style={{padding:'20px'}}>
+        <thead style={{background:'#fa4251',color:'white',padding:'10px'}}>
+        <tr >
             <th scope="col">Order id</th>
             <th scope="col">Email</th>
             <th scope="col">Name</th>

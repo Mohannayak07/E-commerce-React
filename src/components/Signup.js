@@ -118,7 +118,7 @@ export default function Signup() {
               <input type="password" name="confpass" value={confpass} className="form-control" placeholder="Enter password" onChange={(e) => setValue((prev) => ({ ...prev, confpass: e.target.value }))} required autoComplete='off' />
             </div><br />
 
-            <button type="submit" className="btn btn-dark btn-lg btn-block" id="sbtn" onClick={register}>Register</button><br />
+            <button type="submit" className="btn btn-dark btn-lg btn-block" id="sbtn" onClick={register} style={{background:'#fa4251',border:'none'}}>Register</button><br />
             <p className="forgot-password text-right">
               Already registered <Link to="/login">log in?</Link>
             </p>
